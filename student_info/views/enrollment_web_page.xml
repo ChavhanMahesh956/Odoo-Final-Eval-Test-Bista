@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="enrollment_submission_form">
+            <t t-call="website.layout">
+                <div class="container mt-5 mb-3 p-5 shadow-lg" style="background-color: #f9f9f9; border-radius: 10px;">
+                    <h2 class="text-center mb-4">Enrollment Form</h2>
+
+                    <!-- Display error message if any -->
+                    <t t-if=" error">
+                        <div class="alert alert-danger" role="alert">
+                            <t t-esc="error" />
+                        </div>
+                    </t>
+                    <!-- Registration Form -->
+                    <form action="/enrollment/submit_form" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                        <!-- Name Field -->
+                        <div class="form-group row mb-3">
+                            <label for="name" class="col-sm-2 col-form-label">Name*</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name" required="required" class="form-control"
+                                    placeholder="Enter your name" t-att-value="name or ''" />
+                            </div>
+                        </div>
+
+                        <!-- DOB Field -->
+                        <div class="form-group row mb-3">
+                            <label for="dob" class="col-sm-2 col-form-label">DOB*</label>
+                            <div class="col-sm-10">
+                                <input type="date" id="dob" name="dob" required="required" class="form-control"
+                                    placeholder="Enter your DOB" t-att-value="dob or ''" />
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group row mb-3">
+                            <label for="email" class="col-sm-2 col-form-label">Email*</label>
+                            <div class="col-sm-10">
+                                <input type="email" id="email" name="email" required="required" class="form-control"
+                                    placeholder="Enter your email" t-att-value="email or ''" />
+                            </div>
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="form-group row mb-3">
+                            <label for="phone" class="col-sm-2 col-form-label">Phone*</label>
+                            <div class="col-sm-10">
+
+                                <input type="text" id="phone" name="phone" class="form-control ml-2"
+                                    placeholder="Enter your phone number" t-att-value="phone or ''" />
+                            </div>
+                        </div>
+
+                        <!-- Address Field -->
+                        <div class="form-group row mb-3">
+                            <label for="address" class="col-sm-2 col-form-label">Address*</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="address" name="address" required="required" class="form-control"
+                                    placeholder="Enter address" t-att-value="address or ''" />
+                            </div>
+                        </div>
+
+                        <!-- Gender Field -->
+                        <div class="form-group row mb-3">
+                            <label for="gender" class="col-sm-2 col-form-label">Gender*</label>
+                            <div class="col-sm-10">
+                                <select name="gender" id="gender" required="required" class="form-control"
+                                    t-att-value="gender or ''">
+                                    <option value="male" t-att-selected="'male' == gender">Male</option>
+                                    <option value="female" t-att-selected="'female' == gender">Female</option>
+                                    <option value="other" t-att-selected="'other' == gender">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- College Name Field -->
+                        <div class="form-group row mb-3">
+                            <label for="college_id" class="col-sm-2 col-form-label">College Name*</label>
+                            <div class="col-sm-10">
+                                <select name="college_id" id="college_id" required="required" class="form-control">
+                                    <t t-foreach="colleges" t-as="college">
+                                        <option t-att-value="college.name" t-att-selected="college_id == college.id">
+                                            <t t-esc="college.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Course Name Field -->
+                        <div class="form-group row mb-3">
+                            <label for="course_id" class="col-sm-2 col-form-label">Course Name*</label>
+                            <div class="col-sm-10">
+                                <select name="course_id" id="course_id" required="required" class="form-control">
+                                    <t t-foreach="courses" t-as="course">
+                                        <option t-att-value="course.id" t-att-selected="course_id == course.id">
+                                            <t t-esc="course.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Start_date Field -->
+                        <div class="form-group row mb-3">
+                            <label for="start_date" class="col-sm-2 col-form-label">Start Date*</label>
+                            <div class="col-sm-10">
+                                <input type="date" id="start_date" name="start_date" required="required"
+                                    class="form-control" placeholder="Enter Start Date"
+                                    t-att-value="start_date or ''" />
+                            </div>
+                        </div>
+
+                        <!-- Additional Comment Field -->
+                        <div class="form-group row mb-3">
+                            <label for="additional_comment" class="col-sm-2 col-form-label">Additional Comment*</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="address" name="additional_comment" required="required"
+                                    class="form-control" placeholder="Enter Comment"
+                                    t-att-value="additional_comment or ''" />
+                            </div>
+                        </div>
+
+
+                        <!-- Submit Button -->
+                        <div class="form-group row justify-content-center">
+                            <div class="col-sm-10 text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

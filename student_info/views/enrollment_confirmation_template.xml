@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <template id="my_portal_home" inherit_id="portal.portal_my_home">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+
+                <t t-call="portal.portal_docs_entry" class="list-group-item list-group-item-action">
+                    <t t-set="title">Enrollments</t>
+                    <t t-set="url" t-value="'/my/enrollment'" />
+                    <t t-set="placeholder_count" t-value="'enroll_count'" />
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_enrollment" name="Query">
+            <t t-call="portal.portal_layout">
+
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Enrollments</t>
+                </t>
+                <t t-if="enrollment" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone </th>
+                            <th>Course Name</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="enrollment" t-as="enrollment">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/enrollment/#{enrollment.id}">
+                                        <span t-esc="enrollment.name" />
+                                    </a>
+                                </td>
+                                <td><span t-esc="enrollment.email" /> </td>
+                                <td><span t-esc="enrollment.phone" /> </td>
+                                <td><span t-esc="enrollment.course_name" /> </td>
+                                <td><span t-esc="enrollment.start_date" /> </td>
+
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+                <p t-else="">There are currently no Enrollments</p>
+            </t>
+        </template>
+
+
+
+    </data>
+</odoo>

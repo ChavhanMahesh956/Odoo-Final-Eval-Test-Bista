@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_deliveryslip_document_inherit" inherit_id="stock.report_delivery_document">
+        <xpath expr="//thead/tr" position="inside">
+            <th name="th_sm_weight"><strong>Weight</strong></th>
+        </xpath>
+        <xpath expr="//tbody/tr" position="inside">
+            <td><span t-field="move.product_id.weight" /></td>
+        </xpath>
+    </template>
+
+    <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//thead/tr" position="inside">
+            <th>Weight</th>
+        </xpath>
+        <xpath expr="//tbody/tr" position="inside">
+            <td><span t-field="line.product_id.weight" /></td>
+        </xpath>
+    </template>
+
+</odoo>

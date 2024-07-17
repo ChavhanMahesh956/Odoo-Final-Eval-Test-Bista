@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+student_info.access_college_college,access_college_college,student_info.model_college_college,base.group_user,1,1,1,1
+student_info.access_course_course,access_course_course,student_info.model_course_course,base.group_user,1,1,1,1
+student_info.access_enrollment_form,access_enrollment_form,student_info.model_enrollment_form,,1,1,1,1

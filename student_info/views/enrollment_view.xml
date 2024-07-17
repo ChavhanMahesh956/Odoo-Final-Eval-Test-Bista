@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record id="view_enrollment_form" model="ir.ui.view">
+            <field name="name">enrollment.form.form</field>
+            <field name="model">enrollment.form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="dob" />
+                                <field name="phone" />
+                                <field name="email" />
+                                <field name="gender" />
+                                <field name="address" />
+                            </group>
+                            <group>
+                                <field name="college_name" />
+                                <field name="course_name" />
+                                <field name="start_date" />
+                                <field name="additional_comment" />
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_enrollment_tree" model="ir.ui.view">
+            <field name="name">enrollment.form.tree</field>
+            <field name="model">enrollment.form</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="name" />
+                    <field name="dob" />
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="gender" />
+                    <field name="address" />
+                    <field name="start_date" />
+                    <field name="college_name" />
+                    <field name="course_name" />
+                    <field name="additional_comment" />
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_enrollment" model="ir.actions.act_window">
+            <field name="name">Enrollment</field>
+            <field name="res_model">enrollment.form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_enrollment_tree" />
+        </record>
+    </data>
+</odoo>

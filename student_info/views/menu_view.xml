@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <menuitem id="menu_student_info_root" name="College Management">
+
+        <menuitem id="menu_student_info" name="College Management">
+
+        <menuitem id="menu_college" name="College" action="action_college" sequence="10" />
+
+        <menuitem id="menu_course" name="Course" action="action_course" sequence="20" />
+
+        </menuitem>
+
+        <menuitem id="menu_enrollment" name="Enrollment" action="action_enrollment" />
+
+        </menuitem>
+
+    </data>
+</odoo>
